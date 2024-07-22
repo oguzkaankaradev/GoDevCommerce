@@ -2,6 +2,7 @@ package shared
 
 import (
 	"log"
+	"net"
 	"net/http"
 )
 
@@ -26,4 +27,10 @@ func (httpContextAccessor *HttpContextAccessor) IsRequestAvailable() bool {
 	}()
 
 	return true
+}
+
+func isIPAddressSet(address net.IP) bool {
+
+	ipv6Loopback := net.IPv6loopback
+	return address != nil && !address.Equal(ipv6Loopback)
 }
